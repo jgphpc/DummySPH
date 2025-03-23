@@ -1,0 +1,28 @@
+-
+  action: "add_pipelines"
+  pipelines:
+    pl_geometric_clip:
+      f1:
+        type: "clip"
+        params:
+          invert: "true" # "false" removes all particles in the negative zone of "normal"
+          plane:
+            point:
+              x: 0.5
+              y: 0.125
+              z: 0.125
+            normal:
+              x: 0.0
+              y: 1.0
+              z: 0.0
+-
+  action: "add_extracts"
+  extracts:
+    e1:
+      type: "relay"
+      pipeline: "pl_geometric_clip"
+      params:
+        path: "pl_geometric_clip"
+        protocol: "hdf5"
+        fields:
+          - Temperature
